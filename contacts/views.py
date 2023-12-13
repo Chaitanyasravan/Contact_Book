@@ -11,3 +11,8 @@ class ContactListView(ListView):
     template_name = 'contacts/contact_list.html'
     context_object_name = 'contacts'
     
+#Create_contact_view
+from django.views.generic import DetailView
+class ContactDetailView(DetailView):
+    model = Contact
+    template_name = 'contacts/contact_detail.html'
