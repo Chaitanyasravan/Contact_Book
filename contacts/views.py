@@ -17,8 +17,9 @@ class ContactDetailView(DetailView):
     model = Contact
     template_name = 'contacts/contact_detail.html'
 
-#Detailed_view
-from django.views.generic import DetailView
-class ContactDetailView(DetailView):
+from django.views.generic.edit import CreateView
+class ContactCreateView(CreateView):
     model = Contact
-    template_name = 'contacts/contact_detail.html'
+    fields = ['Name', 'Email', 'Notes']
+    success_url = '/contact/'
+    template_name = 'contacts/contact_form.html'
