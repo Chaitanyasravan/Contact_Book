@@ -36,3 +36,10 @@ class ContactUpdateView(UpdateView):
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk')
         return Contact.objects.get(pk=pk)
+ 
+#Delete_contact_view   
+from django.views.generic.edit import DeleteView
+class ContactDeleteView(DeleteView):
+    model = Contact
+    success_url = '/contact/'
+    template_name = 'contacts/contact_confirm_delete.html'
