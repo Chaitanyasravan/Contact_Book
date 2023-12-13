@@ -25,5 +25,5 @@ urlpatterns = [
     path('contact/', views.ContactListView.as_view(), name='contact_list'),
     path('contact/<int:pk>/', views.ContactDetailView.as_view(), name='contact_detail'),
     path('contact/create/', views.ContactCreateView.as_view(), name='contact_create'),
-    
+    path('contact/<int:pk>/update/', views.ContactUpdateView.as_view(), name='contact_update'),
 ]
