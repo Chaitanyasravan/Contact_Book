@@ -16,3 +16,9 @@ from django.views.generic import DetailView
 class ContactDetailView(DetailView):
     model = Contact
     template_name = 'contacts/contact_detail.html'
+
+#Detailed_view
+from django.views.generic import DetailView
+class ContactDetailView(DetailView):
+    model = Contact
+    template_name = 'contacts/contact_detail.html'
