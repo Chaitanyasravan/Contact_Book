@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Management</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'contacts/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            margin-bottom: 80px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-entry {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contact-actions a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .button.updates { background-color: #f0ad4e; }
+        .button.deletes { background-color: #d9534f; }
+        .button.view { background-color: #5bc0de; }
+        .contact-info {
+            flex-grow: 1;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .contact-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .contact-email, .contact-created {
+            margin-bottom: 5px;
+        }
+        footer {
+          background-color: #2c3e50;
+          color: #fff; 
+          text-align: center;
+          padding: 20px 0;
+          font-size: 14px;
+          bottom: 0;
+          width: 100%;
+      }
+      .footer-container {
+          max-width: 1160px;
+          margin: auto;
+          padding: 0 15px;
+      }
+      .footer-container p {
+          margin: 0;
+      }
+      @media (max-width: 767px) {
+          .footer-container {
+              padding: 0 30px;
+          }
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Management</h1>
+    <a href="{% url 'contact_create' %}" class="create-contact-btn">Create a New Contact</a>
+    {% for contact in contacts %}
+        <div class="contact-entry">
+            <div class="contact-actions">
+                <a href="{% url 'contact_update' contact.id %}" class="button updates">&#x270E;</a>
+                <a href="{% url 'contact_delete' contact.id %}" class="button deletes">🗑️</a>
+                <a href="{% url 'contact_detail' contact.id %}" class="button view">&#8505;</a>
+            </div>
+            <div class="contact-info">
+                <span class="contact-name">{{ contact.Name }}</span>
+                <span class="contact-email">{{ contact.Email }}</span>
+                <span class="contact-created">{{ contact.created_time|date:"M d, Y, P"}}</span>
+            </div>
+        </div>
+    {% endfor %}
+  </div>
+<footer>
+    <div class="footer-container">
+        <p>&#169; Created by Chaitanya Sravan Sidda</p>
+    </div>
+</footer>
+</body>
+</html>

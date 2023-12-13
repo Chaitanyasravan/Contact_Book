@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Contact</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'contacts/styles.css' %}">
+</head>
+<body>
+  <div class="form-container">
+    <h1>Update Contact</h1>
+    <form method="post" action="{% url 'contact_update' contact.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+  
+      <div class="form-actions">
+        <button type="submit" class="submit-button">Submit</button>
+        <a href="{% url 'contact_list' %}" class="cancel-button">Cancel</a>
+      </div>
+    </form>
+  </div>  
+  <footer>
+    <div class="footer-container">
+        <p>&#169; Created by Chaitanya Sravan Sidda</p>
+    </div>
+  </footer>
+
+</body>
+</html>

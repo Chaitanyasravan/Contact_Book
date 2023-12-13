@@ -1,0 +1,30 @@
+<head>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'contacts/styles.css' %}">
+</head>
+<body>
+  <h2 class="contact-Name">{{ contact.Name }}</h2>
+
+  {% if contact.Email %}
+      <p>Email: <a href="mailto:{{ contact.Email }}">{{ contact.Email }}</a></p>
+  {% else %}
+      <p>Email not provided</p>
+  {% endif %}
+
+  {% if contact.Notes %}
+      <p>Notes: {{ contact.Notes }}</p>
+  {% else %}
+      <p>No additional notes</p>
+  {% endif %}
+
+  <a href="{% url 'contact_list' %}" class="button">Home</a>
+  <a href="{% url 'contact_update' contact.id %}" class="button updates">Update</a>
+  <a href="{% url 'contact_delete' contact.id %}" class="button deletes">Delete</a>
+
+  <footer>
+    <div class="footer-container">
+        <p>&#169; Created by Chaitanya Sravan Sidda</p>
+    </div>
+</footer>
+
+</body>
